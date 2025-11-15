@@ -14,36 +14,15 @@ Built using **AWS Console + Draw.io**, perfect for learning and portfolio demons
 
 ---
 
-## 📂 Project Structure
-
-```
-root/
-│
-├── diagrams/                     # All VPC, EC2 & networking images
-│   ├── aws-vpc-ec2-architecture.png
-│   ├── ec2-instance-running.png
-│   ├── internet-gateway.png
-│   ├── route-table-created.png
-│   ├── route-table-subnet-association.png
-│   ├── subnet-created.png
-│   ├── vpc-created.png
-│   └── nginx-service-running.png
-│
-├── docs/
-│   └── architecture-explanation.md   # Full documentation of the design
-│
-└── README.md
-```
+## 🚀 Steps to Create the Architecture
 
 ---
 
-## 🚀 Steps to Create the Architecture
-
 ### **1️⃣ Create a VPC**
 - Go to **AWS Console → VPC**
-- Create VPC  
-  - Name: `net-vpc`  
-  - CIDR: `10.0.0.0/16`
+- Click **Create VPC**
+- Name: `net-vpc`
+- CIDR: `10.0.0.0/16`
 
 ---
 
@@ -51,30 +30,32 @@ root/
 - Go to **Subnets → Create Subnet**
 - Select VPC: `net-vpc`
 - Subnet CIDR: `10.0.0.0/24`
-- AZ: `ap-south-1a`
+- Availability Zone: `ap-south-1a`
 - Enable **Auto-assign Public IP**
 
 ---
 
 ### **3️⃣ Create Internet Gateway**
 - Go to **Internet Gateways → Create**
-- Attach to `net-vpc`
+- Attach the IGW to `net-vpc`
 
 ---
 
 ### **4️⃣ Route Table Setup**
-- Create Route Table → `public-route-table`
+- Create Route Table → Name: `public-route-table`
 - Associate with **public subnet**
 - Add route:
-  - `0.0.0.0/0 → Internet Gateway`
+  ```
+  0.0.0.0/0 → Internet Gateway
+  ```
 
 ---
 
 ### **5️⃣ Create Security Group**
 Allow inbound rules:
-- HTTP (80)  
-- HTTPS (443)  
-- SSH (22)  
+- HTTP → 80  
+- HTTPS → 443  
+- SSH → 22  
 
 ---
 
@@ -86,42 +67,43 @@ Allow inbound rules:
 
 ---
 
-## 🔑 7️⃣ Create Key Pair
+## 🔑 **7️⃣ Create Key Pair**
 
-### **Create & Download .pem**
+### Create & Download `.pem` file
 - Click **Create key pair**
-- Key pair type: **RSA**
-- File format: **.pem**
-- Download `.pem` file (IMPORTANT)
+- Key type: **RSA**
+- File type: **.pem**
+- Download `.pem` (very important)
 
 ---
 
-## 🔄 Convert `.pem` → `.ppk` (for PuTTY)
+## 🔄 **Convert `.pem` → `.ppk` (PuTTY users only)**
+
 1. Open **PuTTYgen**
 2. Click **Load**
-3. Select your `.pem` file (choose *All Files*)
+3. Select your **.pem** file (choose *All Files*)
 4. Click **Save private key**
-5. Save as **`.ppk`**
+5. Save as **.ppk**
 
 ---
 
-## 🖥️ 8️⃣ Login to EC2 via SSH
+## 🖥️ **8️⃣ Login to EC2 via SSH**
 
-### ▶️ **If using PuTTY (Windows)**
+### ▶️ If using PuTTY (Windows)
 - Open **PuTTY**
 - Hostname:
   ```
   ec2-user@13.233.165.191
   ```
-- Go to **SSH → Auth → Browse**
-- Select your `.ppk` key
+- Go to **SSH → Auth**
+- Browse & select your `.ppk` key
 - Click **Open**
 
 ---
 
-## 🔧 9️⃣ Install & Start Nginx
+## 🔧 **9️⃣ Install & Start Nginx**
 
-SSH into EC2 and run:
+SSH into EC2 and paste this:
 
 ```bash
 sudo yum update -y
@@ -132,9 +114,9 @@ sudo systemctl start nginx
 
 ---
 
-## 🌍 🔟 Test the Website
+## 🌍 **🔟 Test the Website**
 
-Open:
+Open this in browser:
 
 ```
 http://13.233.165.191
@@ -143,3 +125,4 @@ http://13.233.165.191
 You should see:
 
 **Welcome to Nginx!**
+
