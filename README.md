@@ -119,7 +119,7 @@ sudo systemctl start nginx
 Open this in browser:
 
 ```
-http://13.233.165.191
+http://<public ip>
 ```
 
 You should see:
