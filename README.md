@@ -8,9 +8,12 @@ Built using **AWS Console + Draw.io**, perfect for learning and portfolio demons
 
 ---
 
-## 🏗️ Architecture Diagram
+## 🖼️ Architecture Diagram  
 
-<img src="./diagrams/aws-vpc-ec2-architecture.png" width="700">
+<p align="center">
+<img src="diagrams/aws-vpc-ec2-architecture.png" width="750">
+
+</p>
 
 ---
 
