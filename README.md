@@ -44,8 +44,7 @@ Built using **AWS Console + Draw.io**, perfect for learning and portfolio demons
 ### 8️⃣ Nginx Running Screenshot
 <img src="diagrams/nginx-service-running.png" width="600">
 
-### 9️⃣ Final Architecture Diagram (Full View)
-<img src="diagrams/aws-vpc-ec2-architecture.png" width="700">
+
 
 
 ## 🚀 Steps to Create the Architecture
