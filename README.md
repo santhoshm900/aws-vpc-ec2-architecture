@@ -34,123 +34,133 @@ root/
 │
 └── README.md
 ```
-1️⃣ Create a VPC
+## 📂 Project Structure
 
-Go to AWS Console → VPC
+```
+root/
+│
+├── diagrams/                     # All VPC, EC2 & networking images
+│   ├── aws-vpc-ec2-architecture.png
+│   ├── ec2-instance-running.png
+│   ├── internet-gateway.png
+│   ├── route-table-created.png
+│   ├── route-table-subnet-association.png
+│   ├── subnet-created.png
+│   ├── vpc-created.png
+│   └── nginx-service-running.png
+│
+├── docs/
+│   └── architecture-explanation.md   # Full documentation of the design
+│
+└── README.md
+```
 
-Create VPC
+---
 
-Name: net-vpc
+## 🚀 Steps to Create the Architecture
 
-CIDR: 10.0.0.0/16
+### **1️⃣ Create a VPC**
+- Go to **AWS Console → VPC**
+- Create VPC  
+  - Name: `net-vpc`  
+  - CIDR: `10.0.0.0/16`
 
-2️⃣ Create Public Subnet
+---
 
-Go to Subnets → Create Subnet
+### **2️⃣ Create Public Subnet**
+- Go to **Subnets → Create Subnet**
+- Select VPC: `net-vpc`
+- Subnet CIDR: `10.0.0.0/24`
+- AZ: `ap-south-1a`
+- Enable **Auto-assign Public IP**
 
-Select your VPC
+---
 
-Subnet CIDR: 10.0.0.0/24
+### **3️⃣ Create Internet Gateway**
+- Go to **Internet Gateways → Create**
+- Attach to `net-vpc`
 
-Availability Zone: ap-south-1a
+---
 
-Enable Auto-assign Public IP
+### **4️⃣ Route Table Setup**
+- Create Route Table → `public-route-table`
+- Associate with **public subnet**
+- Add route:
+  - `0.0.0.0/0 → Internet Gateway`
 
-3️⃣ Create Internet Gateway
+---
 
-Go to Internet Gateways → Create
+### **5️⃣ Create Security Group**
+Allow inbound:
+- **HTTP (80)**
+- **HTTPS (443)**
+- **SSH (22)**
 
-Attach to your VPC (net-vpc)
+---
 
-4️⃣ Route Table Setup
+### **6️⃣ Launch EC2 Instance**
+- AMI: **Amazon Linux 2**
+- Type: **t2.micro**
+- Subnet: **Public Subnet**
+- Security Group: Your SG
 
-Create Route Table
+---
 
-Name: public-route-table
+## 🔑 7️⃣ Create Key Pair
 
-Associate with your Subnet
+### **Create & Download .pem**
+- Click **Create key pair**
+- Key pair type: **RSA**
+- File format: **.pem**
+- Download `.pem` file (IMPORTANT)
 
-Add route:
+---
 
-0.0.0.0/0 → Internet Gateway
+## 🔄 Convert .pem → .ppk (for PuTTY)
+1. Open **PuTTYgen**
+2. Click **Load**
+3. Select `.pem` (choose *All Files* )
+4. Click **Save private key**
+5. Save as `.ppk`
 
-5️⃣ Create Security Group
+---
 
-Rules to allow:
+## 🖥️ 8️⃣ Login to EC2 via SSH
 
-HTTP: 80
+### ▶️ **If using PuTTY (Windows)**
+- Open PuTTY  
+- Hostname:  
+  ```
+  ec2-user@13.233.165.191
+  ```
+- Go to **SSH → Auth → Browse**
+- Select your `.ppk` key
+- Click **Open**
 
-HTTPS: 443
+---
 
-SSH: 22
+## 🔧 9️⃣ Install & Start Nginx
 
-6️⃣ Launch EC2 Instance
+SSH into EC2 and run:
 
-AMI: Amazon Linux 2
-
-Instance type: t2.micro
-
-Subnet: public subnet
-
-Security Group: your SG
-
-Click Create key pair
-
-Key pair type: RSA
-
-File format: .pem
-
-Download the .pem file
-(This file is required for SSH login)
-
-🔄 2. Convert .pem → .ppk (for PuTTY users)
-
-If you are using PuTTY, convert .pem to .ppk:
-
-Open PuTTYgen
-
-Click Load
-
-Select your .pem file
-(choose All Files*)
-
-Click Save private key
-
-Save it as .ppk
-(Used for Windows PuTTY SSH login)
-
-🖥️ 3. Login to EC2 using SSH
-➡️ If using PuTTY (Windows)
-
-Open PuTTY
-
-Hostname:
-
-13.233.165.191
-
-
-Go to SSH → Auth
-
-Browse & attach your .ppk key
-
-Click Open
-
-7️⃣ Install & Start Nginx
-
-SSH into EC2:
-
+```bash
 sudo yum update -y
 sudo amazon-linux-extras install nginx1 -y
 sudo systemctl enable nginx
 sudo systemctl start nginx
+```
 
-8️⃣ Test the Website
+---
+
+## 🌍 🔟 Test the Website
 
 Open:
 
+```
 http://13.233.165.191
+```
 
+You should see:
 
-You should see: Welcome to Nginx!
-
+**Welcome to Nginx!**
 
