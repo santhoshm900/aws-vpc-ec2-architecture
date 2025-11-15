@@ -35,6 +35,7 @@ root/
 └── README.md
 ```
 
+---
 
 ## 🚀 Steps to Create the Architecture
 
@@ -70,18 +71,18 @@ root/
 ---
 
 ### **5️⃣ Create Security Group**
-Allow inbound:
-- **HTTP (80)**
-- **HTTPS (443)**
-- **SSH (22)**
+Allow inbound rules:
+- HTTP (80)  
+- HTTPS (443)  
+- SSH (22)  
 
 ---
 
 ### **6️⃣ Launch EC2 Instance**
 - AMI: **Amazon Linux 2**
-- Type: **t2.micro**
+- Instance type: **t2.micro**
 - Subnet: **Public Subnet**
-- Security Group: Your SG
+- Security Group: your SG
 
 ---
 
@@ -95,20 +96,20 @@ Allow inbound:
 
 ---
 
-## 🔄 Convert .pem → .ppk (for PuTTY)
+## 🔄 Convert `.pem` → `.ppk` (for PuTTY)
 1. Open **PuTTYgen**
 2. Click **Load**
-3. Select `.pem` (choose *All Files* )
+3. Select your `.pem` file (choose *All Files*)
 4. Click **Save private key**
-5. Save as `.ppk`
+5. Save as **`.ppk`**
 
 ---
 
 ## 🖥️ 8️⃣ Login to EC2 via SSH
 
 ### ▶️ **If using PuTTY (Windows)**
-- Open PuTTY  
-- Hostname:  
+- Open **PuTTY**
+- Hostname:
   ```
   ec2-user@13.233.165.191
   ```
@@ -142,4 +143,3 @@ http://13.233.165.191
 You should see:
 
 **Welcome to Nginx!**
-
