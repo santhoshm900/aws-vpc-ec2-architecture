@@ -16,3 +16,23 @@ Built using **AWS Console + Draw.io**, perfect for learning and portfolio demons
 
 ## 📂 Project Structure
 
+```
+root/
+│
+├── diagrams/                     # All VPC, EC2 & networking images
+│   ├── aws-vpc-ec2-architecture.png
+│   ├── ec2-instance-running.png
+│   ├── internet-gateway.png
+│   ├── route-table-created.png
+│   ├── route-table-subnet-association.png
+│   ├── subnet-created.png
+│   ├── vpc-created.png
+│   └── nginx-service-running.png
+│
+├── docs/
+│   └── architecture-explanation.md   # Full documentation of the design
+│
+└── README.md
+```
+
+
