@@ -16,6 +16,37 @@ Built using **AWS Console + Draw.io**, perfect for learning and portfolio demons
 </p>
 
 ---
+---
+
+## 🖼️ Individual Diagram Steps
+
+### 1️⃣ VPC Created
+<img src="diagrams/vpc-created.png" width="600">
+
+### 2️⃣ Subnet Created
+<img src="diagrams/subnet-created.png" width="600">
+
+### 3️⃣ Route Table Created
+<img src="diagrams/route-table-created.png" width="600">
+
+### 4️⃣ Route Table – Subnet Association
+<img src="diagrams/route-table-subnet-association.png" width="600">
+
+### 5️⃣ Internet Gateway Created
+<img src="diagrams/internet-gateway.png" width="600">
+
+### 6️⃣ IGW Attached to VPC
+<img src="diagrams/igw.png" width="600">
+
+### 7️⃣ EC2 Instance Running
+<img src="diagrams/ec2-instance-running.png" width="600">
+
+### 8️⃣ Nginx Running Screenshot
+<img src="diagrams/nginx-service-running.png" width="600">
+
+### 9️⃣ Final Architecture Diagram (Full View)
+<img src="diagrams/aws-vpc-ec2-architecture.png" width="700">
+
 
 ## 🚀 Steps to Create the Architecture
 
